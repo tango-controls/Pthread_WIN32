@@ -4,7 +4,7 @@ branches:
     - new-appveyor
 
 environment:
-  matrix:
+  matrix: 
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
       platform: win32
       ARCH: win32-msvc15
@@ -216,8 +216,10 @@ build:
   
 build_script:
   - cmd: set ARCH=%ARCH%
+  - cmd: if %ARCH%==win32-msvc14 move /Y C:\projects\Pthread_WIN32\Makefile C:\projects\pthreads-win32-src\pthreads.2\Makefile
   - cmd: if %ARCH%==x64-msvc14 move /Y C:\projects\Pthread_WIN32\Makefile C:\projects\pthreads-win32-src\pthreads.2\Makefile
   - cmd: if %ARCH%==x64-msvc15 move /Y C:\projects\Pthread_WIN32\Makefile C:\projects\pthreads-win32-src\pthreads.2\Makefile
+  - cmd: if %ARCH%==win32-msvc15 move /Y C:\projects\Pthread_WIN32\Makefile C:\projects\pthreads-win32-src\pthreads.2\Makefile
   - cmd: type "C:\projects\pthreads-win32-src\pthreads.2\Makefile"
   - cmd: cd C:/projects/pthreads-win32-src/pthreads.2
   - cmd: nmake VC-static
