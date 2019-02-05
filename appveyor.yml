@@ -3,11 +3,42 @@ branches:
   only:
     - master
 
-image: Visual Studio 2015
-
 environment:
-  matrix:
-    - platform: win32
+  matrix: 
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      platform: win32
+      ARCH: win32-msvc15
+      configuration: Release
+      CMAKE_GENERATOR: "Visual Studio 15 2017"
+      MSVCVERSION: v141
+      MSVCYEAR: "vs2017"
+      MSVCABR: "15"
+      VC_VER: 15.0
+      PYTHONPATH: c:\Python35\
+      PYTHONPATHOMNI: "/cygdrive/c/Python35/python"
+      BOOST_ROOT: C:\Libraries\boost_1_63_0
+      ZMQ_BASE: C:\projects\libzmq
+      IDL_BASE: C:\projects\tangoidl
+      IDL_BIN: C:\Program Files\tangoidl
+      OMNI_BASE: C:\projects\omniORB-4.2.1
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      platform: x64
+      ARCH: x64-msvc15
+      configuration: Release
+      CMAKE_GENERATOR: "Visual Studio 15 2017 Win64"
+      MSVCVERSION: v141
+      MSVCYEAR: "vs2017"
+      MSVCABR: "15"
+      VC_VER: 15.0
+      PYTHONPATH: c:\Python35-x64\
+      PYTHONPATHOMNI: "/cygdrive/c/Python35-x64/python"
+      BOOST_ROOT: C:\Libraries\boost_1_63_0
+      ZMQ_BASE: C:\projects\libzmq
+      IDL_BASE: C:\projects\tangoidl
+      IDL_BIN: C:\Program Files\tangoidl
+      OMNI_BASE: C:\projects\omniORB-4.2.1
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      platform: win32
       ARCH: win32-msvc9
       configuration: Release
       CMAKE_GENERATOR: "Visual Studio 9 2008"
@@ -21,7 +52,8 @@ environment:
       IDL_BASE: C:\projects\tangoidl
       IDL_BIN: C:\Program Files (x86)\tangoidl
       OMNI_BASE: C:\projects\omniORB-4.2.1
-    - platform: x64
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      platform: x64
       ARCH: x64-msvc9
       configuration: Release
       CMAKE_GENERATOR: "Visual Studio 9 2008 Win64"
@@ -35,7 +67,8 @@ environment:
       IDL_BASE: C:\projects\tangoidl
       IDL_BIN: C:\Program Files\tangoidl
       OMNI_BASE: C:\projects\omniORB-4.2.1
-    - platform: win32
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      platform: win32
       ARCH: win32-msvc10
       configuration: Release
       CMAKE_GENERATOR: "Visual Studio 10 2010"
@@ -50,7 +83,8 @@ environment:
       IDL_BASE: C:\projects\tangoidl
       IDL_BIN: C:\Program Files (x86)\tangoidl
       OMNI_BASE: C:\projects\omniORB-4.2.1
-    - platform: x64
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      platform: x64
       ARCH: x64-msvc10
       configuration: Release
       CMAKE_GENERATOR: "Visual Studio 10 2010 Win64"
@@ -65,7 +99,23 @@ environment:
       IDL_BASE: C:\projects\tangoidl
       IDL_BIN: C:\Program Files\tangoidl
       OMNI_BASE: C:\projects\omniORB-4.2.1
-    - platform: x64
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      platform: win32
+      ARCH: win32-msvc12
+      configuration: Release
+      CMAKE_GENERATOR: "Visual Studio 12 2013"
+      MSVCVERSION: v120
+      MSVCYEAR: "vs2013"
+      MSVCABR: "13"
+      VC_VER: 13.0
+      PYTHONPATHOMNI: "/cygdrive/c/Python33/python"
+      BOOST_ROOT: C:\Libraries\boost_1_63_0
+      ZMQ_BASE: C:\projects\libzmq
+      IDL_BASE: C:\projects\tangoidl
+      IDL_BIN: C:\Program Files\tangoidl
+      OMNI_BASE: C:\projects\omniORB-4.2.1
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      platform: x64
       ARCH: x64-msvc12
       configuration: Release
       CMAKE_GENERATOR: "Visual Studio 12 2013 Win64"
@@ -79,7 +129,24 @@ environment:
       IDL_BASE: C:\projects\tangoidl
       IDL_BIN: C:\Program Files\tangoidl
       OMNI_BASE: C:\projects\omniORB-4.2.1
-    - platform: x64
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      platform: win32
+      ARCH: win32-msvc14
+      configuration: Release
+      CMAKE_GENERATOR: "Visual Studio 14 2015"
+      MSVCVERSION: v140
+      MSVCYEAR: "vs2015"
+      MSVCABR: "14"
+      VC_VER: 14.0
+      PYTHONPATH: c:\Python35\
+      PYTHONPATHOMNI: "/cygdrive/c/Python35/python"
+      BOOST_ROOT: C:\Libraries\boost_1_63_0
+      ZMQ_BASE: C:\projects\libzmq
+      IDL_BASE: C:\projects\tangoidl
+      IDL_BIN: C:\Program Files\tangoidl
+      OMNI_BASE: C:\projects\omniORB-4.2.1 
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      platform: x64
       ARCH: x64-msvc14
       configuration: Release
       CMAKE_GENERATOR: "Visual Studio 14 2015 Win64"
@@ -93,12 +160,12 @@ environment:
       ZMQ_BASE: C:\projects\libzmq
       IDL_BASE: C:\projects\tangoidl
       IDL_BIN: C:\Program Files\tangoidl
-      OMNI_BASE: C:\projects\omniORB-4.2.1
+      OMNI_BASE: C:\projects\omniORB-4.2.1 
 init:
   # go to hell Xamarin (see http://help.appveyor.com/discussions/problems/4569)
-  - del "C:\Program Files (x86)\MSBuild\4.0\Microsoft.Common.Targets\ImportAfter\Xamarin.Common.targets"
-  - del "C:\Program Files (x86)\MSBuild\14.0\Microsoft.Common.targets\ImportAfter\Xamarin.Common.targets"
-  - del "C:\Program Files (x86)\MSBuild\12.0\Microsoft.Common.targets\ImportAfter\Xamarin.Common.targets"
+  - cmd: if "%APPVEYOR_BUILD_WORKER_IMAGE%" NEQ "Visual Studio 2017" del "C:\Program Files (x86)\MSBuild\4.0\Microsoft.Common.Targets\ImportAfter\Xamarin.Common.targets"
+  - cmd: if "%APPVEYOR_BUILD_WORKER_IMAGE%" NEQ "Visual Studio 2017" del "C:\Program Files (x86)\MSBuild\14.0\Microsoft.Common.targets\ImportAfter\Xamarin.Common.targets"
+  - cmd: if "%APPVEYOR_BUILD_WORKER_IMAGE%" NEQ "Visual Studio 2017" del "C:\Program Files (x86)\MSBuild\12.0\Microsoft.Common.targets\ImportAfter\Xamarin.Common.targets"
   #RDP from start
   #- ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
   #Pthread-Win32
@@ -109,11 +176,11 @@ init:
   - cmd: 7z -y x pthreads-w32-2-9-1-release.zip -oC:\projects\pthreads-win32-src\
   #VS2008 patch
   - cmd: cd "C:\projects\"
-  - cmd: appveyor DownloadFile https://github.com/menpo/condaci/raw/master/vs2008_patch.zip
-  - cmd: 7z -y x vs2008_patch.zip -oC:\projects\vs2008_patch\
+  - cmd: if "%APPVEYOR_BUILD_WORKER_IMAGE%" NEQ "Visual Studio 2017" appveyor DownloadFile https://github.com/menpo/condaci/raw/master/vs2008_patch.zip
+  - cmd: if "%APPVEYOR_BUILD_WORKER_IMAGE%" NEQ "Visual Studio 2017" 7z -y x vs2008_patch.zip -oC:\projects\vs2008_patch\
   - cmd: if %ARCH%==x64-msvc9 call C:\projects\vs2008_patch\setup_x64.bat
   - cmd: if %ARCH%==x32-msvc9 call C:\projects\vs2008_patch\setup_x86.bat
-  - cmd: copy "C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\bin\vcvars64.bat" "C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\bin\amd64\vcvarsamd64.bat"
+  - cmd: if "%APPVEYOR_BUILD_WORKER_IMAGE%" NEQ "Visual Studio 2017" copy "C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\bin\vcvars64.bat" "C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\bin\amd64\vcvarsamd64.bat"
   - cmd: cd "C:\projects\Pthread_WIN32"
   
 install:
@@ -130,8 +197,12 @@ install:
   - cmd: if %ARCH%==win32-msvc10 call "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\vcvarsall.bat"
   - cmd: if %ARCH%==win32-msvc10 set path=C:\Windows\Microsoft.NET\Framework\v4.0.30319;%path%
   - cmd: if %ARCH%==x64-msvc10 call "C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64 
+  - cmd: if %ARCH%==win32-msvc12 call "C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\vcvarsall.bat"
   - cmd: if %ARCH%==x64-msvc12 call "C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\vcvarsall.bat" x64
+  - cmd: if %ARCH%==win32-msvc14 call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat"
   - cmd: if %ARCH%==x64-msvc14 call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x64
+  - cmd: if %ARCH%==win32-msvc15 call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars32.bat"
+  - cmd: if %ARCH%==x64-msvc15 call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars64.bat"
   - cmd: echo "Generator='%CMAKE_GENERATOR%'"
   - cmd: echo "Platform='%Platform%'"
   - cmd: set PYTHONPATH=%PYTHONPATH%
@@ -145,7 +216,10 @@ build:
   
 build_script:
   - cmd: set ARCH=%ARCH%
+  - cmd: if %ARCH%==win32-msvc14 move /Y C:\projects\Pthread_WIN32\Makefile C:\projects\pthreads-win32-src\pthreads.2\Makefile
   - cmd: if %ARCH%==x64-msvc14 move /Y C:\projects\Pthread_WIN32\Makefile C:\projects\pthreads-win32-src\pthreads.2\Makefile
+  - cmd: if %ARCH%==x64-msvc15 move /Y C:\projects\Pthread_WIN32\Makefile C:\projects\pthreads-win32-src\pthreads.2\Makefile
+  - cmd: if %ARCH%==win32-msvc15 move /Y C:\projects\Pthread_WIN32\Makefile C:\projects\pthreads-win32-src\pthreads.2\Makefile
   - cmd: type "C:\projects\pthreads-win32-src\pthreads.2\Makefile"
   - cmd: cd C:/projects/pthreads-win32-src/pthreads.2
   - cmd: nmake VC-static
