@@ -4,6 +4,7 @@ version: 1.0.{build}
 #     - master
 
 environment:
+  TAG: "2.9.2"
   matrix: 
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2022
       platform: win32
@@ -233,9 +234,9 @@ build_script:
 after_build:
   - cmd: cd "C:/projects/Pthread_WIN32"
   # Generating zip
-  - cmd: 7z a pthreads-win32-2.9.1_%ARCH%.zip C:/projects/Pthread_WIN32\bin\
-  - cmd: 7z a pthreads-win32-2.9.1_%ARCH%.zip C:/projects/Pthread_WIN32\lib\
-  - cmd: 7z a pthreads-win32-2.9.1_%ARCH%.zip C:/projects/Pthread_WIN32\include\
+  - cmd: 7z a pthreads-win32-%TAG%_%ARCH%.zip C:/projects/Pthread_WIN32\bin\
+  - cmd: 7z a pthreads-win32-%TAG%_%ARCH%.zip C:/projects/Pthread_WIN32\lib\
+  - cmd: 7z a pthreads-win32-%TAG%_%ARCH%.zip C:/projects/Pthread_WIN32\include\
 
 
 on_finish:
