@@ -204,6 +204,8 @@ build_script:
   - cmd: if %ARCH%==win32-msvc15 move /Y C:\projects\Pthread_WIN32\Makefile C:\projects\pthreads-win32-src\pthreads.2\Makefile
   - cmd: if %ARCH%==x64-msvc16 move /Y C:\projects\Pthread_WIN32\Makefile C:\projects\pthreads-win32-src\pthreads.2\Makefile
   - cmd: if %ARCH%==win32-msvc16 move /Y C:\projects\Pthread_WIN32\Makefile C:\projects\pthreads-win32-src\pthreads.2\Makefile
+  - cmd: if %ARCH%==x64-msvc17 move /Y C:\projects\Pthread_WIN32\Makefile C:\projects\pthreads-win32-src\pthreads.2\Makefile
+  - cmd: if %ARCH%==win32-msvc17 move /Y C:\projects\Pthread_WIN32\Makefile C:\projects\pthreads-win32-src\pthreads.2\Makefile
 
   - cmd: type "C:\projects\pthreads-win32-src\pthreads.2\Makefile"
   - cmd: cd C:/projects/pthreads-win32-src/pthreads.2
