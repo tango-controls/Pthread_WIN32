@@ -132,12 +132,14 @@ environment:
       MSVCABR: "14"
       VC_VER: 14.0
 init:
+  # Set variable if perform old msvc patch and remove xamarin
+  - cmd: set OLD_VERSION_PATCH=0
+  - cmd: if "%APPVEYOR_BUILD_WORKER_IMAGE%" NEQ "Visual Studio 2017" if "%APPVEYOR_BUILD_WORKER_IMAGE%" NEQ "Visual Studio 2019" if "%APPVEYOR_BUILD_WORKER_IMAGE%" NEQ "Visual Studio 2022" set OLD_VERSION_PATCH=1 
+
   # go to hell Xamarin (see http://help.appveyor.com/discussions/problems/4569)
-  - cmd: set REMOVE_XAMARIN=0
-  - cmd: if "%APPVEYOR_BUILD_WORKER_IMAGE%" NEQ "Visual Studio 2017" if "%APPVEYOR_BUILD_WORKER_IMAGE%" NEQ "Visual Studio 2019" if "%APPVEYOR_BUILD_WORKER_IMAGE%" NEQ "Visual Studio 2022" set REMOVE_XAMARIN=1 
-  - cmd: if %REMOVE_XAMARIN%==1 del "C:\Program Files (x86)\MSBuild\4.0\Microsoft.Common.Targets\ImportAfter\Xamarin.Common.targets"
-  - cmd: if %REMOVE_XAMARIN%==1 del "C:\Program Files (x86)\MSBuild\14.0\Microsoft.Common.targets\ImportAfter\Xamarin.Common.targets"
-  - cmd: if %REMOVE_XAMARIN%==1 del "C:\Program Files (x86)\MSBuild\12.0\Microsoft.Common.targets\ImportAfter\Xamarin.Common.targets"
+  - cmd: if %OLD_VERSION_PATCH%==1 del "C:\Program Files (x86)\MSBuild\4.0\Microsoft.Common.Targets\ImportAfter\Xamarin.Common.targets"
+  - cmd: if %OLD_VERSION_PATCH%==1 del "C:\Program Files (x86)\MSBuild\14.0\Microsoft.Common.targets\ImportAfter\Xamarin.Common.targets"
+  - cmd: if %OLD_VERSION_PATCH%==1 del "C:\Program Files (x86)\MSBuild\12.0\Microsoft.Common.targets\ImportAfter\Xamarin.Common.targets"
   #RDP from start
   #- ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
   #Pthread-Win32
@@ -148,11 +150,11 @@ init:
   - cmd: 7z -y x pthreads-w32-2-9-1-release.zip -oC:\projects\pthreads-win32-src\
   #VS2008 patch
   - cmd: cd "C:\projects\"
-  - cmd: if "%APPVEYOR_BUILD_WORKER_IMAGE%" NEQ "Visual Studio 2017" if "%APPVEYOR_BUILD_WORKER_IMAGE%" NEQ "Visual Studio 2019" appveyor DownloadFile https://github.com/menpo/condaci/raw/master/vs2008_patch.zip
-  - cmd: if "%APPVEYOR_BUILD_WORKER_IMAGE%" NEQ "Visual Studio 2017" if "%APPVEYOR_BUILD_WORKER_IMAGE%" NEQ "Visual Studio 2019" 7z -y x vs2008_patch.zip -oC:\projects\vs2008_patch\
+  - cmd: if %OLD_VERSION_PATCH%==1 appveyor DownloadFile https://github.com/menpo/condaci/raw/master/vs2008_patch.zip
+  - cmd: if %OLD_VERSION_PATCH%==1 7z -y x vs2008_patch.zip -oC:\projects\vs2008_patch\
   - cmd: if %ARCH%==x64-msvc9 call C:\projects\vs2008_patch\setup_x64.bat
   - cmd: if %ARCH%==x32-msvc9 call C:\projects\vs2008_patch\setup_x86.bat
-  - cmd: if "%APPVEYOR_BUILD_WORKER_IMAGE%" NEQ "Visual Studio 2017" if "%APPVEYOR_BUILD_WORKER_IMAGE%" NEQ "Visual Studio 2019" copy "C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\bin\vcvars64.bat" "C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\bin\amd64\vcvarsamd64.bat"
+  - cmd: if %OLD_VERSION_PATCH%==1 copy "C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\bin\vcvars64.bat" "C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\bin\amd64\vcvarsamd64.bat"
   - cmd: cd "C:\projects\Pthread_WIN32"
   
 install:
