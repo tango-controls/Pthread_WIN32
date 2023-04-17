@@ -14,13 +14,6 @@ environment:
       MSVCYEAR: "vs2019"
       MSVCABR: "16"
       VC_VER: 16.0
-      PYTHONPATH: c:\Python35\
-      PYTHONPATHOMNI: "/cygdrive/c/Python35/python"
-      BOOST_ROOT: C:\Libraries\boost_1_63_0
-      ZMQ_BASE: C:\projects\libzmq
-      IDL_BASE: C:\projects\tangoidl
-      IDL_BIN: C:\Program Files\tangoidl
-      OMNI_BASE: C:\projects\omniORB-4.2.1
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
       platform: x64
       ARCH: x64-msvc16
@@ -30,13 +23,6 @@ environment:
       MSVCYEAR: "vs2019"
       MSVCABR: "16"
       VC_VER: 16.0
-      PYTHONPATH: c:\Python35-x64\
-      PYTHONPATHOMNI: "/cygdrive/c/Python35-x64/python"
-      BOOST_ROOT: C:\Libraries\boost_1_63_0
-      ZMQ_BASE: C:\projects\libzmq
-      IDL_BASE: C:\projects\tangoidl
-      IDL_BIN: C:\Program Files\tangoidl
-      OMNI_BASE: C:\projects\omniORB-4.2.1
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
       platform: win32
       ARCH: win32-msvc15
@@ -46,13 +32,6 @@ environment:
       MSVCYEAR: "vs2017"
       MSVCABR: "15"
       VC_VER: 15.0
-      PYTHONPATH: c:\Python35\
-      PYTHONPATHOMNI: "/cygdrive/c/Python35/python"
-      BOOST_ROOT: C:\Libraries\boost_1_63_0
-      ZMQ_BASE: C:\projects\libzmq
-      IDL_BASE: C:\projects\tangoidl
-      IDL_BIN: C:\Program Files\tangoidl
-      OMNI_BASE: C:\projects\omniORB-4.2.1
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
       platform: x64
       ARCH: x64-msvc15
@@ -62,13 +41,6 @@ environment:
       MSVCYEAR: "vs2017"
       MSVCABR: "15"
       VC_VER: 15.0
-      PYTHONPATH: c:\Python35-x64\
-      PYTHONPATHOMNI: "/cygdrive/c/Python35-x64/python"
-      BOOST_ROOT: C:\Libraries\boost_1_63_0
-      ZMQ_BASE: C:\projects\libzmq
-      IDL_BASE: C:\projects\tangoidl
-      IDL_BIN: C:\Program Files\tangoidl
-      OMNI_BASE: C:\projects\omniORB-4.2.1
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
       platform: win32
       ARCH: win32-msvc9
@@ -78,12 +50,6 @@ environment:
       MSVCYEAR: "vs2008"
       MSVCABR: "9"
       VC_VER: 9.0
-      PYTHONPATHOMNI: "/cygdrive/c/Python27/python"
-      BOOST_ROOT: C:\Libraries\boost_1_63_0
-      ZMQ_BASE: C:\projects\libzmq
-      IDL_BASE: C:\projects\tangoidl
-      IDL_BIN: C:\Program Files (x86)\tangoidl
-      OMNI_BASE: C:\projects\omniORB-4.2.1
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
       platform: x64
       ARCH: x64-msvc9
@@ -93,12 +59,6 @@ environment:
       MSVCYEAR: "vs2008"
       MSVCABR: "9"
       VC_VER: 9.0
-      PYTHONPATHOMNI: "/cygdrive/c/Python27/python"
-      BOOST_ROOT: C:\Libraries\boost_1_63_0
-      ZMQ_BASE: C:\projects\libzmq
-      IDL_BASE: C:\projects\tangoidl
-      IDL_BIN: C:\Program Files\tangoidl
-      OMNI_BASE: C:\projects\omniORB-4.2.1
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
       platform: win32
       ARCH: win32-msvc10
@@ -108,13 +68,6 @@ environment:
       MSVCYEAR: "vs2010"
       MSVCABR: "10"
       VC_VER: 10.0
-      PYTHONPATH: c:\Python33\
-      PYTHONPATHOMNI: "/cygdrive/c/Python33/python"
-      BOOST_ROOT: C:\Libraries\boost_1_63_0
-      ZMQ_BASE: C:\projects\libzmq
-      IDL_BASE: C:\projects\tangoidl
-      IDL_BIN: C:\Program Files (x86)\tangoidl
-      OMNI_BASE: C:\projects\omniORB-4.2.1
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
       platform: x64
       ARCH: x64-msvc10
@@ -124,13 +77,6 @@ environment:
       MSVCYEAR: "vs2010"
       MSVCABR: "10"
       VC_VER: 10.0
-      PYTHONPATH: c:\Python33-x64\
-      PYTHONPATHOMNI: "/cygdrive/c/Python33-x64/python"
-      BOOST_ROOT: C:\Libraries\boost_1_63_0
-      ZMQ_BASE: C:\projects\libzmq
-      IDL_BASE: C:\projects\tangoidl
-      IDL_BIN: C:\Program Files\tangoidl
-      OMNI_BASE: C:\projects\omniORB-4.2.1
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
       platform: win32
       ARCH: win32-msvc12
@@ -140,12 +86,6 @@ environment:
       MSVCYEAR: "vs2013"
       MSVCABR: "13"
       VC_VER: 13.0
-      PYTHONPATHOMNI: "/cygdrive/c/Python33/python"
-      BOOST_ROOT: C:\Libraries\boost_1_63_0
-      ZMQ_BASE: C:\projects\libzmq
-      IDL_BASE: C:\projects\tangoidl
-      IDL_BIN: C:\Program Files\tangoidl
-      OMNI_BASE: C:\projects\omniORB-4.2.1
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
       platform: x64
       ARCH: x64-msvc12
@@ -155,12 +95,6 @@ environment:
       MSVCYEAR: "vs2013"
       MSVCABR: "13"
       VC_VER: 13.0
-      PYTHONPATHOMNI: "/cygdrive/c/Python33-x64/python"
-      BOOST_ROOT: C:\Libraries\boost_1_63_0
-      ZMQ_BASE: C:\projects\libzmq
-      IDL_BASE: C:\projects\tangoidl
-      IDL_BIN: C:\Program Files\tangoidl
-      OMNI_BASE: C:\projects\omniORB-4.2.1
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
       platform: win32
       ARCH: win32-msvc14
@@ -170,13 +104,6 @@ environment:
       MSVCYEAR: "vs2015"
       MSVCABR: "14"
       VC_VER: 14.0
-      PYTHONPATH: c:\Python35\
-      PYTHONPATHOMNI: "/cygdrive/c/Python35/python"
-      BOOST_ROOT: C:\Libraries\boost_1_63_0
-      ZMQ_BASE: C:\projects\libzmq
-      IDL_BASE: C:\projects\tangoidl
-      IDL_BIN: C:\Program Files\tangoidl
-      OMNI_BASE: C:\projects\omniORB-4.2.1 
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
       platform: x64
       ARCH: x64-msvc14
@@ -186,13 +113,6 @@ environment:
       MSVCYEAR: "vs2015"
       MSVCABR: "14"
       VC_VER: 14.0
-      PYTHONPATH: c:\Python35-x64\
-      PYTHONPATHOMNI: "/cygdrive/c/Python35-x64/python"
-      BOOST_ROOT: C:\Libraries\boost_1_63_0
-      ZMQ_BASE: C:\projects\libzmq
-      IDL_BASE: C:\projects\tangoidl
-      IDL_BIN: C:\Program Files\tangoidl
-      OMNI_BASE: C:\projects\omniORB-4.2.1 
 init:
   # go to hell Xamarin (see http://help.appveyor.com/discussions/problems/4569)
   - cmd: if "%APPVEYOR_BUILD_WORKER_IMAGE%" NEQ "Visual Studio 2017" if "%APPVEYOR_BUILD_WORKER_IMAGE%" NEQ "Visual Studio 2019" del "C:\Program Files (x86)\MSBuild\4.0\Microsoft.Common.Targets\ImportAfter\Xamarin.Common.targets"
@@ -239,7 +159,7 @@ install:
   - cmd: if %ARCH%==x64-msvc16 call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars64.bat"
   - cmd: echo "Generator='%CMAKE_GENERATOR%'"
   - cmd: echo "Platform='%Platform%'"
-  - cmd: set PYTHONPATH=%PYTHONPATH%
+  # - cmd: set PYTHONPATH=%PYTHONPATH%
   - cmd: set ARCH=%ARCH%
 
 clone_folder: C:\projects\Pthread_WIN32
